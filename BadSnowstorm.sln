@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 2012 for Windows Desktop
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BadSnowstorm", "BadSnowstorm\BadSnowstorm.csproj", "{CBCD875B-6BE2-4A49-9253-2CD852EC9A25}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWorld", "HelloWorld\HelloWorld.csproj", "{5463C364-AFDB-450C-899F-9E7BA0EC64A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,12 @@ Global
 		{CBCD875B-6BE2-4A49-9253-2CD852EC9A25}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CBCD875B-6BE2-4A49-9253-2CD852EC9A25}.Release|x86.ActiveCfg = Release|x86
 		{CBCD875B-6BE2-4A49-9253-2CD852EC9A25}.Release|x86.Build.0 = Release|x86
+		{5463C364-AFDB-450C-899F-9E7BA0EC64A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5463C364-AFDB-450C-899F-9E7BA0EC64A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5463C364-AFDB-450C-899F-9E7BA0EC64A8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5463C364-AFDB-450C-899F-9E7BA0EC64A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5463C364-AFDB-450C-899F-9E7BA0EC64A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5463C364-AFDB-450C-899F-9E7BA0EC64A8}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
