@@ -2,7 +2,7 @@
 
 namespace BadSnowstorm
 {
-    public class BorderCharacter
+    public class BorderCharacter : IBorderCharacter
     {
         private readonly Point _location;
         private BorderInfo _borderInfo;

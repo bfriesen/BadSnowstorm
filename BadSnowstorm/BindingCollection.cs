@@ -12,7 +12,7 @@ namespace BadSnowstorm
         private readonly List<Binding<TView, TViewModel>> _bindings = new List<Binding<TView, TViewModel>>();
 
         public void Add(
-            Expression<Func<TView, ContentArea>> contentAreaExpression,
+            Expression<Func<TView, IContentArea>> contentAreaExpression,
             Expression<Func<TViewModel, string>> viewModelPropertyExpression)
         {
             CheckExpression(contentAreaExpression);
@@ -21,7 +21,7 @@ namespace BadSnowstorm
         }
 
         public void Add(
-            Expression<Func<TView, ContentArea>> contentAreaExpression,
+            Expression<Func<TView, IContentArea>> contentAreaExpression,
             Expression<Func<TViewModel, Input>> viewModelPropertyExpression)
         {
             CheckExpression(contentAreaExpression);
@@ -30,7 +30,7 @@ namespace BadSnowstorm
         }
 
         public void Add(
-            Expression<Func<TView, ContentArea>> contentAreaExpression,
+            Expression<Func<TView, IContentArea>> contentAreaExpression,
             Expression<Func<TViewModel, object>> viewModelPropertyExpression,
             Func<object, string> viewModelPropertyValueFormatter)
         {

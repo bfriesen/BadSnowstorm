@@ -7,7 +7,7 @@ namespace BadSnowstorm
         where TView : View<TView, TViewModel>, IView
         where TViewModel : ViewModel
     {
-        private readonly InputArea _inputArea;
+        private readonly IInputArea _inputArea;
         private readonly BindingCollection<TView, TViewModel> _bindings;
 
         protected View()
@@ -26,7 +26,7 @@ namespace BadSnowstorm
 
         public TViewModel ViewModel { get; private set; }
 
-        public InputArea InputArea
+        public IInputArea InputArea
         {
             get { return _inputArea; }
         }
@@ -65,7 +65,7 @@ namespace BadSnowstorm
         {
             ClearContents(console);
             
-            BorderRenderer.Render(console, GetSelfAndDescendants().ToList());
+            BorderRenderer.Render(console, this.GetSelfAndDescendants().ToList());
             
             foreach (var binding in Bindings)
             {
@@ -77,7 +77,7 @@ namespace BadSnowstorm
 
         private void ClearContents(IConsole console)
         {
-            foreach (var clientArea in GetDescendants())
+            foreach (var clientArea in this.GetDescendants())
             {
                 clientArea.ClearContent(console);
             }

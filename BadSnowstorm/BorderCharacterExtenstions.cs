@@ -6,12 +6,12 @@ namespace BadSnowstorm
 {
     public static class BorderCharacterExtenstions
     {
-        public static IEnumerable<BorderCharacter> Merge(this IEnumerable<IEnumerable<BorderCharacter>> borderCharacters, Func<Point, BorderInfo, bool> excludeMergePredicate)
+        public static IEnumerable<IBorderCharacter> Merge(this IEnumerable<IEnumerable<IBorderCharacter>> borderCharacters, Func<Point, BorderInfo, bool> excludeMergePredicate)
         {
             return Merge(borderCharacters.SelectMany(x => x), excludeMergePredicate);
         }
 
-        public static IEnumerable<BorderCharacter> Merge(this IEnumerable<BorderCharacter> borderCharacters, Func<Point, BorderInfo, bool> excludeMergePredicate)
+        public static IEnumerable<IBorderCharacter> Merge(this IEnumerable<IBorderCharacter> borderCharacters, Func<Point, BorderInfo, bool> excludeMergePredicate)
         {
             if (excludeMergePredicate == null)
             {
@@ -22,25 +22,32 @@ namespace BadSnowstorm
 
             for (int i = 0; i < all.Count; i++)
             {
-                var lhs = all[i];
+                var lhs = all[i] as BorderCharacter;
 
-                if (!excludeMergePredicate(lhs.Location, lhs.BorderInfo))
+                if (lhs != null)
                 {
-                    for (int j = i + 1; j < all.Count; j++)
+                    if (!excludeMergePredicate(lhs.Location, lhs.BorderInfo))
                     {
-                        var rhs = all[j];
-                        if (lhs.Location == rhs.Location)
+                        for (int j = i + 1; j < all.Count; j++)
                         {
-                            if (!excludeMergePredicate(rhs.Location, rhs.BorderInfo))
+                            var rhs = all[j] as BorderCharacter;
+
+                            if (rhs != null)
                             {
-                                lhs.MergeWith(rhs);
+                                if (lhs.Location == rhs.Location)
+                                {
+                                    if (!excludeMergePredicate(rhs.Location, rhs.BorderInfo))
+                                    {
+                                        lhs.MergeWith(rhs);
+                                    }
+
+                                    all.RemoveAt(j--);
+                                }
                             }
-
-                            all.RemoveAt(j--);
                         }
-                    }
 
-                    yield return lhs;
+                        yield return lhs;
+                    }
                 }
             }
         }

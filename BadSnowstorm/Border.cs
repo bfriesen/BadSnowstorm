@@ -73,7 +73,7 @@ namespace BadSnowstorm
             return !left.Equals(right);
         }
 
-        public IEnumerable<BorderCharacter> GetBorderCharacters(Rectangle location)
+        public IEnumerable<IBorderCharacter> GetBorderCharacters(Rectangle location)
         {
             if (Left != BorderType.None)
             {

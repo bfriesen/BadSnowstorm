@@ -8,17 +8,17 @@ namespace BadSnowstorm
         where TView : IViewBase
         where TViewModel : ViewModel
     {
-        private readonly Func<TView, ContentArea> _getContentArea;
+        private readonly Func<TView, IContentArea> _getContentArea;
         private readonly Func<TViewModel, string> _getContent;
 
-        internal Binding(Func<TView, ContentArea> getContentArea, Func<TViewModel, string> getContent)
+        internal Binding(Func<TView, IContentArea> getContentArea, Func<TViewModel, string> getContent)
         {
             _getContentArea = getContentArea;
             _getContent = getContent;
         }
 
         public static Binding<TView, TViewModel> Create(
-            Expression<Func<TView, ContentArea>> contentAreaExpression,
+            Expression<Func<TView, IContentArea>> contentAreaExpression,
             Expression<Func<TViewModel, string>> viewModelPropertyExpression)
         {
             return Create(
@@ -28,14 +28,14 @@ namespace BadSnowstorm
         }
 
         public static Binding<TView, TViewModel> Create(
-            Expression<Func<TView, ContentArea>> contentAreaExpression,
+            Expression<Func<TView, IContentArea>> contentAreaExpression,
             Expression<Func<TViewModel, Input>> viewModelPropertyExpression)
         {
             return Create(contentAreaExpression, viewModelPropertyExpression, input => input.GetContent());
         }
 
         public static Binding<TView, TViewModel> Create<TViewModelValueType>(
-            Expression<Func<TView, ContentArea>> contentAreaExpression,
+            Expression<Func<TView, IContentArea>> contentAreaExpression,
             Expression<Func<TViewModel, TViewModelValueType>> viewModelPropertyExpression,
             Func<TViewModelValueType, string> formatPropertyValue)
         {
@@ -54,7 +54,7 @@ namespace BadSnowstorm
             contentArea.RenderContent(console);
         }
 
-        internal ContentArea GetContentArea(TView view)
+        internal IContentArea GetContentArea(TView view)
         {
             return _getContentArea(view);
         }

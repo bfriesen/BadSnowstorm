@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace BadSnowstorm
 {
-    public class InputArea : ContentArea
+    public class InputArea : ContentArea, IInputArea
     {
         private static readonly Dictionary<InputType, Func<Input, IInputProcessor>> InputHandlerMap;
 

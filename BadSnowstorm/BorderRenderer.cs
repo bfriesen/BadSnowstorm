@@ -6,7 +6,7 @@ namespace BadSnowstorm
 {
     public static class BorderRenderer
     {
-        public static void Render(IConsole console, IList<ContentArea> contentAreas)
+        public static void Render(IConsole console, IList<IContentArea> contentAreas)
         {
             var mergedBorderRenderOverride =
                 contentAreas

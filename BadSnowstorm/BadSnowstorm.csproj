@@ -86,9 +86,13 @@
     <Compile Include="GoBack.cs" />
     <Compile Include="GoTo.cs" />
     <Compile Include="IAcceptsInput.cs" />
+    <Compile Include="IBorderCharacter.cs" />
     <Compile Include="IConsole.cs" />
+    <Compile Include="IContentArea.cs" />
+    <Compile Include="IContentAreaExtensions.cs" />
     <Compile Include="IControllerFactory.cs" />
     <Compile Include="IActionResult.cs" />
+    <Compile Include="IInputArea.cs" />
     <Compile Include="IInputProcessor.cs" />
     <Compile Include="Input.cs" />
     <Compile Include="InputArea.cs" />

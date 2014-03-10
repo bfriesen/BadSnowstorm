@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace BadSnowstorm
 {
-    public class ContentArea
+    public class ContentArea : IContentArea
     {
         public const char BlackForeground = '\u03B1';
         public const char BlueForeground = '\u03B2';
@@ -56,7 +56,7 @@ namespace BadSnowstorm
 
         internal ContentArea()
         {
-            Children = new List<ContentArea>();            
+            Children = new List<IContentArea>();            
         }
 
         public ContentArea(string name)
@@ -76,7 +76,7 @@ namespace BadSnowstorm
         public string Content { get; set; }
         public ContentAlignment ContentAlignment { get; set; }
         public ContentType ContentType { get; set; }
-        public List<ContentArea> Children { get; private set; }
+        public List<IContentArea> Children { get; private set; }
         public Func<Point, BorderInfo, bool> BorderRenderOverride { get; set; }
         public Point LastCursorLocation { get; private set; }
 
@@ -280,29 +280,6 @@ namespace BadSnowstorm
                 Bounds.Height - bottom - top);
 
             return paddedBounds;
-        }
-
-        protected IEnumerable<ContentArea> GetDescendants()
-        {
-            foreach (var child in Children.Where(x => x != null))
-            {
-                yield return child;
-
-                foreach (var descendant in child.GetDescendants())
-                {
-                    yield return descendant;
-                }
-            }
-        }
-
-        protected IEnumerable<ContentArea> GetSelfAndDescendants()
-        {
-            yield return this;
-
-            foreach (var descendant in GetDescendants())
-            {
-                yield return descendant;
-            }
         }
 
         protected ConsoleColor GetColor(char greekChar)
